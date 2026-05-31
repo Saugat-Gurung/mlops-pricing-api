@@ -2,6 +2,13 @@
 
 An end-to-end Machine Learning Operations (MLOps) project that bridges the gap between data science and software engineering. This project trains a Random Forest regression model on supply chain data and deploys it as a high-speed, containerized web API.
 
+**Live Demo:** [Test the live AI pricing engine here] https://mlops-pricing-api.onrender.com
+
+### Recent Deployments & UI Upgrades:
+* **Cloud Infrastructure:** Engineered an automated CI/CD pipeline triggering instant Docker container deployments to the cloud.
+* **Geospatial Routing:** Replaced static distance inputs with an active routing system. It utilizes the Haversine formula to calculate global hub-to-hub flight distances using raw latitude/longitude coordinates.
+* **Full-Stack Integration:** Built a custom HTML/JS frontend directly into the Python backend to translate mathematical outputs into real-world GBP (£) and estimated shipping timelines.
+
 ### Architecture & Tech Stack
 * **Machine Learning:** Scikit-Learn (Random Forest Regressor), Pandas, NumPy
 * **API Framework:** FastAPI, Pydantic, Uvicorn
