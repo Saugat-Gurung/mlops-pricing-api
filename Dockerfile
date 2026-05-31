@@ -1,5 +1,5 @@
 # 1. Use an official, lightweight Python environment as the base
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 # 2. Set the working directory inside the container
 WORKDIR /app
