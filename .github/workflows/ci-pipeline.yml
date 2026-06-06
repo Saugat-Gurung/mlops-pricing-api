@@ -1,34 +1,33 @@
 name: API Automated Testing
 
-# 1. When should this robot wake up? Every time you push code to the 'main' branch.
 on:
   push:
     branches: [ main ]
 
 jobs:
   test-api:
-    # 2. What kind of computer should GitHub use? A standard Linux machine.
     runs-on: ubuntu-latest
 
     steps:
-    # 3. Download your code from your repository
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    # 4. Install Python on the GitHub machine
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
 
-    # 5. Install your API requirements AND your testing tools
     - name: Install Dependencies
       run: |
         pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest httpx
 
-    # 6. Run the exact same test command you just ran locally!
     - name: Run Pytest
       run: |
         pytest test_api.py -v
+
+    # NEW STEP: Only if the tests pass, ping Render to deploy the new code
+    - name: Trigger Render Deployment
+      if: success()
+      run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
